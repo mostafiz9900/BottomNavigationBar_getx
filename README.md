@@ -6,6 +6,6 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 ***
-#Getx state management use this bottom navigation bar evry tab chage then load newly and evry time call create and delete method on own controller
+#Getx state management use this bottom navigation bar every tab chage then load newly and every time call create and delete method on own controller
 ***
-<img src="Screenshot_1.png" width="150"/>
+<img src="Screenshot_1.png" />
