@@ -10,22 +10,41 @@ class HistoryView extends GetView<HistoryController> {
       appBar: AppBar(
         title: Text('HistoryView'),
         centerTitle: true,
+        actions: [
+          Obx(
+            () {
+              return Center(
+                child: Text(
+                  '${controller.count.value}',
+                  style: TextStyle(fontSize: 20),
+                ),
+              );
+            },
+          )
+        ],
       ),
-      body: Obx(
-        () {
-          return Center(
-            child: Text(
-              'HistoryView is working ${controller.count.value}',
-              style: TextStyle(fontSize: 20),
-            ),
-          );
+      body: ListView.builder(
+        controller: controller.hideButtonController,
+        itemCount: controller.exercises.length,
+        itemBuilder: (context, index) {
+          return Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
+              alignment: Alignment.center,
+              child: Text('${controller.exercises[index]}'));
         },
       ),
-      floatingActionButton: FloatingActionButton.small(
-          onPressed: () {
-            controller.increment();
-          },
-          child: Text(' + ')),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Obx(
+        () => controller.isVisible.value
+            ? FloatingActionButton.small(
+                onPressed: () {
+                  controller.increment();
+                },
+                child: Text(' + '))
+            : Container(),
+      ),
     );
   }
 }
